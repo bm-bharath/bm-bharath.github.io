@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>B M Bharath | Data Science & AI Portfolio</title>
+  <title>B M Bharath's Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
@@ -152,6 +152,37 @@
     .nav-links a:hover::after {
       width: 100%;
     }
+
+    .project-filters {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    
+    .filter-btn {
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.9);
+      color: #e5e7eb;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+    
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+      border-color: transparent;
+    }
+    
+    .project-image {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 0.6rem;
+      border: 1px solid rgba(148,163,184,0.35);
+    }
+
 
     /* HERO */
     .hero {
@@ -916,11 +947,19 @@
       machine learning, forecasting, IoT, and explainable AI.
     </p>
   </div>
+  
+<!-- Project Filters -->
+<div class="project-filters">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="da">Data Analyst</button>
+  <button class="filter-btn" data-filter="ds">Data Scientist</button>
+  <button class="filter-btn" data-filter="ml">ML / AI</button>
+</div>
 
   <div class="projects-grid">
 
     <!-- Azure Retail Analytics -->
-    <article class="card">
+     <article class="card" data-category="da">
       <h3 class="project-title">Azure Retail Sales & Customer Analytics (AdventureWorks)</h3>
       <p class="project-desc">
         End-to-end cloud analytics solution using Azure Medallion Architecture (Bronze–Silver–Gold).
@@ -940,7 +979,7 @@
     </article>
 
     <!-- Customer Shopping Behavior -->
-    <article class="card">
+    <article class="card" data-category="da ds">
       <h3 class="project-title">Customer Shopping Behavior Analytics</h3>
       <p class="project-desc">
         Analyzed customer shopping behavior to identify purchasing patterns, spending trends,
@@ -959,7 +998,7 @@
     </article>
 
     <!-- SuperStore Analytics -->
-    <article class="card">
+    <article class="card" data-category="da">
       <h3 class="project-title">SuperStore Sales Analytics & Forecasting Dashboard</h3>
       <p class="project-desc">
         Built an interactive Power BI dashboard to analyze sales, profit, regional performance,
@@ -978,7 +1017,7 @@
     </article>
 
     <!-- Student Performance Dashboard -->
-    <article class="card">
+    <article class="card" data-category="da">
       <h3 class="project-title">Student Performance Analytics Dashboard</h3>
       <p class="project-desc">
         Designed a data analytics dashboard to evaluate student performance, attendance,
@@ -997,7 +1036,7 @@
     </article>
 
     <!-- PowerPredictor -->
-    <article class="card">
+   <article class="card" data-category="ds ml">
       <h3 class="project-title">PowerPredictor – LSTM-Based Energy Usage Forecasting</h3>
       <p class="project-desc">
         Developed a deep learning model using LSTM to forecast energy consumption based on
@@ -1016,7 +1055,7 @@
     </article>
 
     <!-- Paal.AI -->
-    <article class="card">
+    <article class="card" data-category="ml ds">
       <h3 class="project-title">Paal.AI – IoT-Based Milk Quality Checker</h3>
       <p class="project-desc">
         Built an IoT-enabled milk quality monitoring system integrating multiple sensors
@@ -1035,7 +1074,7 @@
     </article>
 
     <!-- ClassLens -->
-    <article class="card">
+    <article class="card" data-category="da">
       <h3 class="project-title">ClassLens – Daily Student Performance Tracker</h3>
       <p class="project-desc">
         Built a daily student tracking system to monitor attendance, performance,
@@ -1054,7 +1093,7 @@
     </article>
 
     <!-- ATS with XAI -->
-    <article class="card">
+    <article class="card" data-category="ml ds">
       <h3 class="project-title">ATS with Ranking using Explainable AI (XAI)</h3>
       <p class="project-desc">
         Developed an AI-driven applicant tracking system that ranks resumes using
@@ -1290,8 +1329,34 @@
     // Set current year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
+  <script>
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const projects = document.querySelectorAll(".projects-grid .card");
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filterButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filter = btn.dataset.filter;
+
+      projects.forEach(project => {
+        const categories = project.dataset.category;
+
+        if (filter === "all" || categories.includes(filter)) {
+          project.style.display = "block";
+        } else {
+          project.style.display = "none";
+        }
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
+
 
 
 
