@@ -406,6 +406,62 @@
       white-space: nowrap;
     }
 
+    /* HERO ENTRY ANIMATIONS */
+    .hero-animate > div {
+      animation: fadeUp 0.9s ease forwards;
+    }
+    
+    .hero-card-animate {
+      animation: fadeLeft 1s ease forwards;
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+    
+    /* Value proposition */
+    .hero-value {
+      font-size: 0.95rem;
+      margin-top: 0.4rem;
+      margin-bottom: 1.1rem;
+      color: #9ca3af;
+      max-width: 520px;
+    }
+    
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeLeft {
+      from {
+        opacity: 0;
+        transform: translateX(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    .hero-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    
+    .hero-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+    }
+    
+    
+
+
+
+    
     /* SECTIONS */
     section {
       padding: 2.5rem 0;
@@ -743,7 +799,7 @@
 
   <main class="wrapper">
    <!-- HERO -->
-<section class="hero" id="top">
+<section class="hero hero-animate" id="top">
   <div>
     <div class="hero-badge">
       <div class="hero-badge-dot"></div>
@@ -787,7 +843,7 @@
   </div>
 
   <!-- HERO CARD -->
-  <aside class="hero-card">
+  <aside class="hero-card hero-card-animate">
     <div class="hero-card-tag">
       <span class="hero-card-tag-dot"></span>
       Currently exploring: Data Analytics & Azure
@@ -1556,6 +1612,7 @@
 
 </body>
 </html>
+
 
 
 
