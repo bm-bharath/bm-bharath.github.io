@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>B M Bharath | Data Science & AI Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Portfolio of B M Bharath - Data Science, Machine Learning, and Analytics projects, skills, and experience."
+  />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.15);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --card: rgba(15, 23, 42, 0.85);
+      --border: rgba(148, 163, 184, 0.25);
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.55);
+      --transition-fast: 0.2s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 50%, #020617 100%);
+      color: var(--text);
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrapper {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.25rem 4rem;
+    }
+
+    /* NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.92),
+        rgba(2, 6, 23, 0.55),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.25rem;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #4f46e5, #0ea5e9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+      box-shadow: 0 0 28px rgba(79, 70, 229, 0.7);
+    }
+
+    .nav-title {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-title span:first-child {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .nav-title span:last-child {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      font-size: 0.85rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(to right, #4f46e5, #06b6d4);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: #e5e7eb;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.6fr);
+      gap: 2rem;
+      align-items: center;
+      padding: 4rem 0 3rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.55rem 0.25rem 0.25rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: radial-gradient(circle at left, var(--accent-soft), transparent);
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .hero-badge-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #22c55e, #16a34a);
+      box-shadow: 0 0 18px rgba(34, 197, 94, 0.8);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.25rem, 3vw + 1.5rem, 3.2rem);
+      line-height: 1.1;
+      margin-bottom: 0.85rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(to right, #a5b4fc, #22d3ee);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-subtitle strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.55rem 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast), background var(--transition-fast),
+        border-color var(--transition-fast), color var(--transition-fast);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+      color: white;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 22px 50px rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.7);
+      border-color: rgba(148, 163, 184, 0.55);
+      color: #e5e7eb;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .hero-meta-item span {
+      display: block;
+    }
+
+    .hero-meta-label {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+
+    .hero-meta-value {
+      font-weight: 500;
+      color: #e5e7eb;
+    }
+
+    /* Hero right - Stats / Card */
+    .hero-card {
+      position: relative;
+      padding: 1.75rem 1.5rem;
+      border-radius: 26px;
+      background: radial-gradient(circle at top left, #1f2937, #020617);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .hero-card-tag {
+      font-size: 0.7rem;
+      padding: 0.18rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: var(--muted);
+    }
+
+    .hero-card-tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-card h2 {
+      font-size: 1rem;
+      margin: 1rem 0 0.4rem;
+    }
+
+    .hero-card p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .metric {
+      padding: 0.7rem 0.7rem;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .metric-label {
+      font-size: 0.65rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.15rem;
+    }
+
+    .metric-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .metric-sub {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+      border-top: 1px dashed rgba(148, 163, 184, 0.55);
+      padding-top: 0.9rem;
+    }
+
+    .hero-card-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .pill {
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.65rem;
+      white-space: nowrap;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 2.5rem 0;
+    }
+
+    .section-header {
+      margin-bottom: 1.7rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-description {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.5fr) minmax(0, 1.8fr);
+      gap: 2rem;
+    }
+
+    .about-text {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .about-text p + p {
+      margin-top: 0.75rem;
+    }
+
+    .highlight {
+      color: #a5b4fc;
+      font-weight: 500;
+    }
+
+    .info-list {
+      list-style: none;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .info-list li {
+      margin-bottom: 0.3rem;
+    }
+
+    .info-label {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .skill-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.65rem;
+    }
+
+    .skill-badge {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.75rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.1rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.3rem;
+    }
+
+    .project-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-title {
+      font-size: 0.96rem;
+      font-weight: 600;
+    }
+
+    .project-tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+    }
+
+    .project-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .project-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    .project-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .project-chip {
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.7rem;
+      white-space: nowrap;
+    }
+
+    .project-link {
+      font-size: 0.75rem;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      color: #38bdf8;
+    }
+
+    /* EXPERIENCE & EDUCATION */
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      padding: 0.9rem 0.95rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.8rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-role {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .timeline-org {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .timeline-date {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .timeline-body {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    .timeline-body ul {
+      margin-left: 1rem;
+      margin-top: 0.3rem;
+    }
+
+    .timeline-body li {
+      margin-bottom: 0.2rem;
+    }
+
+    /* PUBLICATIONS */
+    .pub-list {
+      list-style: none;
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .pub-title {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.5fr);
+      gap: 1.8rem;
+    }
+
+    .contact-item {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #9ca3af;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-value {
+      color: #e5e7eb;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.75rem;
+    }
+
+    .social-links a {
+      font-size: 0.8rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .social-links a:hover {
+      border-color: #38bdf8;
+    }
+
+    footer {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.3);
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 3rem;
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .wrapper {
+        padding: 0 1rem 3rem;
+      }
+
+      .hero {
+        padding-top: 2.5rem;
+      }
+
+      .hero-card {
+        padding: 1.35rem 1.1rem;
+      }
+
+      section {
+        padding: 2rem 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header>
+    <nav class="nav">
+      <div class="nav-left">
+        <div class="logo-circle">BB</div>
+        <div class="nav-title">
+          <span>B M Bharath</span>
+          <span>Data Science · AI & ML</span>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrapper">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div>
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          Open to Data Science & Analytics Roles
+        </div>
+        <h1>
+          Hi, I'm <span>B M Bharath</span><br />
+          Data Science & AI/ML Engineer
+        </h1>
+        <p class="hero-subtitle">
+          <strong>B.Tech Computer Science and Engineering (AI & ML) graduate</strong> from
+          Kalasalingam Academy of Research and Education with a strong foundation in
+          <strong>data science, machine learning, and analytics</strong>. Skilled in Python,
+          SQL, Power BI, Tableau, and building <strong>end-to-end data solutions</strong> from
+          raw data to insights and dashboards.
+        </p>
+
+        <div class="hero-cta">
+          <!-- TODO: Replace # with your real CV link (Google Drive / PDF) -->
+          <a href="#" class="btn btn-primary">
+            Download CV
+            <span>↗</span>
+          </a>
+          <a href="#projects" class="btn btn-ghost">View Projects</a>
+        </div>
+
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Location</span>
+            <span class="hero-meta-value">India · Open to Global</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Focus Areas</span>
+            <span class="hero-meta-value">Data Science, ML, Analytics</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-label">Status</span>
+            <span class="hero-meta-value">Actively seeking DS / DA roles</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- HERO CARD -->
+      <aside class="hero-card">
+        <div class="hero-card-tag">
+          <span class="hero-card-tag-dot"></span>
+          Currently exploring: Risk Analytics & YouTube Data
+        </div>
+        <h2>Snapshot</h2>
+        <p>
+          I work on <strong>data-driven products</strong> — from
+          <strong>risk analytics dashboards</strong> and
+          <strong>API-based data pipelines</strong> to
+          <strong>IoT-enabled ML systems</strong> for real-time monitoring.
+        </p>
+
+        <div class="metrics-grid">
+          <div class="metric">
+            <div class="metric-label">Projects</div>
+            <div class="metric-value">10+ </div>
+            <div class="metric-sub">ML · Analytics · Dashboards</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Experience</div>
+            <div class="metric-value">Industry</div>
+            <div class="metric-sub">ML in manufacturing</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Core Stack</div>
+            <div class="metric-value">Python · SQL</div>
+            <div class="metric-sub">Power BI · Tableau</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Highlights</div>
+            <div class="metric-value">Awards</div>
+            <div class="metric-sub">Hackathons & Papers</div>
+          </div>
+        </div>
+
+        <div class="hero-card-footer">
+          <div class="hero-card-pill-row">
+            <span class="pill">Data Science</span>
+            <span class="pill">Machine Learning</span>
+            <span class="pill">Data Analytics</span>
+          </div>
+          <span>Turning raw data into decisions ↑</span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-header">
+        <p class="section-eyebrow">About</p>
+        <h2 class="section-title">Who I am</h2>
+        <p class="section-description">
+          A quick overview of my background, interests, and what I like to work on.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text card">
+          <p>
+            I'm <span class="highlight">B M Bharath</span>, a
+            <span class="highlight">Computer Science and Engineering (AI & ML)</span>
+            graduate from <span class="highlight">Kalasalingam Academy of Research and Education</span>.
+            I enjoy working at the intersection of
+            <span class="highlight">data science, machine learning, and analytics</span>,
+            building systems that move from data collection to <strong>actionable insights</strong>.
+          </p>
+          <p>
+            My experience ranges from <span class="highlight">risk analytics in banking</span>,
+            <span class="highlight">YouTube data analysis</span> using APIs and deep learning,
+            to an <span class="highlight">IoT-based milk quality checker</span> with ML and
+            real-time monitoring. I also worked as an <strong>ML Intern</strong>, deploying
+            a VGG16-based defect classification model for rubber components in manufacturing.
+          </p>
+          <p>
+            Alongside technical work, I’ve held leadership roles in the
+            <span class="highlight">IUCEE KARE Student Chapter</span> and contributed to
+            <span class="highlight">research in engineering education</span>, combining
+            pedagogy, data, and technology.
+          </p>
+
+          <ul class="info-list">
+            <li>
+              <span class="info-label">Degree:</span>
+              B.Tech CSE (AI & ML), CGPA 8.37
+            </li>
+            <li>
+              <span class="info-label">Interests:</span>
+              Data Analytics, ML, BI Dashboards, IoT Analytics
+            </li>
+            <li>
+              <span class="info-label">Looking for:</span>
+              Data Analyst / Data Scientist / ML Engineer roles
+            </li>
+          </ul>
+        </div>
+
+        <div class="card" id="skills">
+          <h3 style="font-size: 0.95rem; margin-bottom: 0.5rem;">Skills at a glance</h3>
+          <p style="font-size: 0.8rem; color: var(--muted);">
+            These are the tools and technologies I use most frequently.
+          </p>
+
+          <h4 style="margin-top: 0.8rem; font-size: 0.8rem;">Programming & Query</h4>
+          <div class="skill-badges">
+            <span class="skill-badge">Python</span>
+            <span class="skill-badge">SQL</span>
+            <span class="skill-badge">Java</span>
+            <span class="skill-badge">C</span>
+          </div>
+
+          <h4 style="margin-top: 0.8rem; font-size: 0.8rem;">Data & ML</h4>
+          <div class="skill-badges">
+            <span class="skill-badge">Pandas</span>
+            <span class="skill-badge">NumPy</span>
+            <span class="skill-badge">Scikit-learn</span>
+            <span class="skill-badge">TensorFlow / Keras</span>
+            <span class="skill-badge">EDA & Data Cleaning</span>
+            <span class="skill-badge">Feature Engineering</span>
+            <span class="skill-badge">Risk Analytics</span>
+          </div>
+
+          <h4 style="margin-top: 0.8rem; font-size: 0.8rem;">BI & Visualization</h4>
+          <div class="skill-badges">
+            <span class="skill-badge">Power BI</span>
+            <span class="skill-badge">Tableau</span>
+            <span class="skill-badge">Excel</span>
+            <span class="skill-badge">Matplotlib</span>
+          </div>
+
+          <h4 style="margin-top: 0.8rem; font-size: 0.8rem;">Tools & Platforms</h4>
+          <div class="skill-badges">
+            <span class="skill-badge">Jupyter Notebook</span>
+            <span class="skill-badge">Google Colab</span>
+            <span class="skill-badge">MySQL · SQL Server</span>
+            <span class="skill-badge">Git & GitHub</span>
+            <span class="skill-badge">Google Firebase</span>
+          </div>
+
+          <h4 style="margin-top: 0.8rem; font-size: 0.8rem;">Other</h4>
+          <div class="skill-badges">
+            <span class="skill-badge">Generative AI</span>
+            <span class="skill-badge">Prompt Engineering</span>
+            <span class="skill-badge">Leadership</span>
+            <span class="skill-badge">Public Speaking</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-header">
+        <p class="section-eyebrow">Projects</p>
+        <h2 class="section-title">Selected Data & ML Work</h2>
+        <p class="section-description">
+          A mix of academic, internship, and personal projects focused on analytics, ML, and real-world impact.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1: Risk Analytics -->
+        <article class="card">
+          <div class="project-title-row">
+            <div>
+              <h3 class="project-title">
+                Risk Analytics in Banking using Data Analytics
+              </h3>
+            </div>
+            <span class="project-tag">Data Analytics</span>
+          </div>
+          <p class="project-desc">
+            Built an end-to-end banking risk analytics system to minimize loan default risks by
+            analysing customer and banking data. Performed data cleaning, feature engineering,
+            and calculated KPIs such as total loans, deposits, and client engagement. Designed
+            an interactive <strong>Power BI dashboard</strong> to support data-driven lending decisions.
+          </p>
+          <div class="project-meta-row">
+            <div class="project-chips">
+              <span class="project-chip">Python</span>
+              <span class="project-chip">MySQL</span>
+              <span class="project-chip">Power BI</span>
+              <span class="project-chip">EDA</span>
+            </div>
+            <!-- TODO: Add GitHub / dashboard link -->
+            <a href="#" class="project-link">View project</a>
+          </div>
+        </article>
+
+        <!-- Project 2: YouTube Analytics -->
+        <article class="card">
+          <div class="project-title-row">
+            <div>
+              <h3 class="project-title">
+                YouTube Analytics API Integration & Insights
+              </h3>
+            </div>
+            <span class="project-tag">Data Engineering</span>
+          </div>
+          <p class="project-desc">
+            Developed a tool to integrate and analyse YouTube channel data using the
+            <strong>YouTube Data API</strong>. Automated data retrieval, cleaning, and visualization
+            to understand video performance and engagement. Used <strong>YOLOv8, EasyOCR, and
+            TensorFlow</strong> for advanced video and text analysis to enrich channel insights.
+          </p>
+          <div class="project-meta-row">
+            <div class="project-chips">
+              <span class="project-chip">Python</span>
+              <span class="project-chip">YouTube Data API</span>
+              <span class="project-chip">TensorFlow</span>
+              <span class="project-chip">YOLOv8</span>
+            </div>
+            <!-- TODO: Add GitHub link -->
+            <a href="#" class="project-link">GitHub repo</a>
+          </div>
+        </article>
+
+        <!-- Project 3: Milk Quality Checker -->
+        <article class="card">
+          <div class="project-title-row">
+            <div>
+              <h3 class="project-title">
+                IoT-based Milk Quality Checker with ML
+              </h3>
+            </div>
+            <span class="project-tag">IoT + ML</span>
+          </div>
+          <p class="project-desc">
+            Designed a low-cost IoT device to monitor milk quality using pH, temperature, density (HX711),
+            and colour sensors. Integrated an ML model (e.g., <strong>LightGBM</strong>) for adulteration
+            detection and connected to <strong>Google Firebase</strong> for cloud-based logging and analysis.
+            Aims to support small-scale dairy producers with real-time quality insights.
+          </p>
+          <div class="project-meta-row">
+            <div class="project-chips">
+              <span class="project-chip">Python</span>
+              <span class="project-chip">ML (LightGBM)</span>
+              <span class="project-chip">ESP8266</span>
+              <span class="project-chip">Firebase</span>
+            </div>
+            <!-- TODO: Add paper / repo link -->
+            <a href="#" class="project-link">Project / paper</a>
+          </div>
+        </article>
+
+        <!-- Project 4: Industrial Defect Classification -->
+        <article class="card">
+          <div class="project-title-row">
+            <div>
+              <h3 class="project-title">
+                Rubber Component Defect Classification (VGG16)
+              </h3>
+            </div>
+            <span class="project-tag">Computer Vision</span>
+          </div>
+          <p class="project-desc">
+            As an ML Intern at Vjayam Technologies, developed and trained a
+            <strong>VGG16-based deep learning model</strong> using TensorFlow and Keras to classify
+            moulded rubber components as defective or non-defective. Included image preprocessing,
+            data augmentation, and integration with the production pipeline for improved quality control.
+          </p>
+          <div class="project-meta-row">
+            <div class="project-chips">
+              <span class="project-chip">TensorFlow</span>
+              <span class="project-chip">Keras</span>
+              <span class="project-chip">VGG16</span>
+              <span class="project-chip">CV</span>
+            </div>
+            <!-- TODO: Add summary / slide link -->
+            <a href="#" class="project-link">Project summary</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & EDUCATION -->
+    <section id="experience">
+      <div class="section-header">
+        <p class="section-eyebrow">Experience & Education</p>
+        <h2 class="section-title">What I've done so far</h2>
+        <p class="section-description">
+          Industry exposure, student leadership, and a strong academic foundation.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <!-- Internship -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">ML Intern</div>
+              <div class="timeline-org">
+                Vjayam Technologies Private Limited · Bengaluru, Karnataka
+              </div>
+            </div>
+            <div class="timeline-date">May 2024 – June 2024</div>
+          </div>
+          <div class="timeline-body">
+            <ul>
+              <li>Developed and trained a <strong>VGG16-based image classification model</strong> using TensorFlow and Keras to classify moulded rubber components.</li>
+              <li>Performed image preprocessing (resizing, normalization, augmentation) to improve model performance and robustness.</li>
+              <li>Supported integration of the model into the production pipeline, helping enhance the quality control process.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- IUCEE President -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Student President</div>
+              <div class="timeline-org">IUCEE KARE Student Chapter</div>
+            </div>
+            <div class="timeline-date">Apr 2024 – May 2025</div>
+          </div>
+          <div class="timeline-body">
+            <ul>
+              <li>Led chapter initiatives, coordinating events, workshops, and student engagement activities.</li>
+              <li>Collaborated with faculty and external partners to drive engineering education initiatives.</li>
+              <li>Guided the chapter to receive the <strong>Best Student Chapter Award – IUCEE IASF 2025</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Advisory & Creative Head -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Student Advisory Board Member & Creative Head</div>
+              <div class="timeline-org">IUCEE KARE Student Chapter</div>
+            </div>
+            <div class="timeline-date">Apr 2023 – Mar 2024</div>
+          </div>
+          <div class="timeline-body">
+            <ul>
+              <li>Advocated for student needs and feedback within the chapter.</li>
+              <li>Designed digital posters and content to promote chapter activities.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">B.Tech in Computer Science and Engineering (AI & ML)</div>
+              <div class="timeline-org">Kalasalingam Academy of Research and Education · Krishnankoil, Tamil Nadu</div>
+            </div>
+            <div class="timeline-date">Sep 2021 – May 2025</div>
+          </div>
+          <div class="timeline-body">
+            <ul>
+              <li>CGPA: <strong>8.37</strong>.</li>
+              <li>Coursework in Data Structures, ML, DL, Data Science, Probability & Statistics.</li>
+              <li>Participated in hackathons, coding contests, and technical paper/poster competitions.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS & AWARDS -->
+    <section id="publications">
+      <div class="section-header">
+        <p class="section-eyebrow">Publications & Achievements</p>
+        <h2 class="section-title">Research & Recognition</h2>
+        <p class="section-description">
+          Academic contributions and milestones that shaped my journey.
+        </p>
+      </div>
+
+      <div class="card">
+        <ul class="pub-list">
+          <li>
+            <span class="pub-title">
+              An Evaluation of Synesthetic Learning Pedagogy for Engineering Education
+            </span>
+            <br />
+            <span>
+              Published in <strong>Journal of Engineering Education Transformations (JEET)</strong>,
+              Vol. 38, Issue S2, 2025. DOI: 10.16920/jeet/2025/v38is2/25061.
+              <!-- TODO: Replace # with actual JEET link -->
+              <a href="#" class="project-link">Read paper</a>
+            </span>
+          </li>
+
+          <li>
+            <span class="pub-title">
+              IoT-Enabled Milk Quality Monitoring System Using Machine Learning
+            </span>
+            <br />
+            <span>
+              Research work on real-time milk adulteration detection using ML and IoT, aligned with
+              dairy quality monitoring and automation.
+              <!-- TODO: Add conference/paper link when available -->
+            </span>
+          </li>
+
+          <li>
+            <span class="pub-title">
+              Best Student Chapter Award – IUCEE IASF 2025
+            </span>
+            <br />
+            <span>
+              Awarded to the IUCEE KARE Student Chapter under my leadership for excellence in
+              student engagement and impactful activities.
+            </span>
+          </li>
+
+          <li>
+            <span class="pub-title">
+              Hackathons & Competitions
+            </span>
+            <br />
+            <span>
+              Grand finale participant in <strong>HACKHEIST 2K24</strong>, finalist in
+              <strong>CODEATHON 23</strong>, multiple podium finishes at IBM ICE Day events,
+              and top 15 rank in <strong>CODE COMBAT KARE</strong>.
+            </span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-header">
+        <p class="section-eyebrow">Contact</p>
+        <h2 class="section-title">Let's connect</h2>
+        <p class="section-description">
+          Open to roles, collaborations, and interesting data problems. Feel free to reach out.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="card">
+          <div class="contact-item">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">bharathbm83@gmail.com</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">+91 98612 08416</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">Location</div>
+            <div class="contact-value">India · Open to relocation and remote roles</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">Preferred roles</div>
+            <div class="contact-value">
+              Data Analyst, Data Scientist (Junior), ML Engineer, BI / Analytics roles
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="font-size: 0.9rem; margin-bottom: 0.5rem;">Find me online</h3>
+          <p style="font-size: 0.8rem; color: var(--muted);">
+            These are the best places to see my work and connect professionally.
+          </p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/bmbharath83/" target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+            <a href="https://github.com/bm-bharath" target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+            <!-- Optional: add when ready -->
+            <a href="#">Kaggle</a>
+            <a href="#">X (Twitter)</a>
+          </div>
+          <p style="font-size: 0.75rem; color: var(--muted); margin-top: 0.9rem;">
+            For opportunities, please include a brief description of the role, location,
+            and timeline — I’ll respond as soon as possible.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> B M Bharath · Data Science & AI Portfolio
+    </footer>
+  </main>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
