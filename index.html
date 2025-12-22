@@ -182,8 +182,54 @@
       margin-bottom: 0.6rem;
       border: 1px solid rgba(148,163,184,0.35);
     }
+    .projects-grid .card {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all 0.4s ease;
+    }
+    
+    .projects-grid .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .sticky-cta {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+      padding: 0.6rem 1rem;
+      border-radius: 999px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+    
+    .sticky-cta a {
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    
+    .sticky-cta.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
 
 
+
+
+
+
+
+
+
+
+    
     /* HERO */
     .hero {
       display: grid;
@@ -860,7 +906,7 @@
     <div class="metrics-grid">
       <div class="metric">
         <div class="metric-label">Projects</div>
-        <div class="metric-value">10+</div>
+        <div class="metric-value counter" data-target="10">0+</div>
         <div class="metric-sub"> Analytics · Dashboards · ML</div>
       </div>
 
@@ -1222,25 +1268,26 @@
         <div class="timeline-date">Oct 2025 – Present · Hyderabad, India</div>
       </div>
       <div class="timeline-body">
-        <ul>
-          <li>
-            Working on <strong>Job Shop Scheduling optimization problems</strong>,
-            analysing task sequencing and resource utilization to improve
-            operational efficiency.
-          </li>
-          <li>
-            Performed <strong>data preprocessing and exploratory data analysis (EDA)</strong>
-            on scheduling datasets to identify bottlenecks and performance constraints.
-          </li>
-          <li>
-            Assisted in developing <strong>optimization and ML-based scheduling approaches</strong>
-            under real-world operational constraints.
-          </li>
-          <li>
-            Created analytical reports and visualizations to communicate
-            <strong>scheduling insights and performance metrics</strong> to stakeholders.
-          </li>
-        </ul>
+      <ul>
+        <li>
+          Assisted in <strong>data collection, cleaning, and preprocessing</strong>
+          to ensure high-quality datasets for reliable analysis.
+        </li>
+        <li>
+          Supported <strong>exploratory data analysis (EDA)</strong> and
+          insight generation to enable <strong>data-driven decision-making</strong>.
+        </li>
+        <li>
+          Implemented and evaluated <strong>machine learning models</strong>
+          under supervision, gaining hands-on experience in
+          model development and validation.
+        </li>
+        <li>
+          Developed <strong>interactive dashboards and analytical reports</strong>
+          to enhance data visualization and effectively support stakeholders.
+        </li>
+      </ul>
+
       </div>
     </div>
 
@@ -1586,6 +1633,7 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
+  
   <script>
   const filterButtons = document.querySelectorAll(".filter-btn");
   const projects = document.querySelectorAll(".projects-grid .card");
@@ -1597,11 +1645,15 @@
 
       const filter = btn.dataset.filter;
 
-      projects.forEach(project => {
+      projects.forEach((project, index) => {
         const categories = project.dataset.category;
+        project.classList.remove("show");
 
         if (filter === "all" || categories.includes(filter)) {
           project.style.display = "block";
+          setTimeout(() => {
+            project.classList.add("show");
+          }, index * 80); // stagger animation
         } else {
           project.style.display = "none";
         }
@@ -1610,8 +1662,68 @@
   });
 </script>
 
+
+
+
+
+  <script>
+  const counters = document.querySelectorAll(".counter");
+
+  const runCounter = (counter) => {
+    const target = +counter.dataset.target;
+    let count = 0;
+    const speed = 30;
+
+    const update = () => {
+      count++;
+      counter.textContent = count + "+";
+      if (count < target) {
+        setTimeout(update, speed);
+      }
+    };
+    update();
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        runCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.6 });
+
+  counters.forEach(counter => observer.observe(counter));
+</script>
+
+<script>
+  const stickyCTA = document.getElementById("stickyCTA");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+      stickyCTA.classList.add("show");
+    } else {
+      stickyCTA.classList.remove("show");
+    }
+  });
+</script>
+
+
+
+
+  
+
+  <!-- STICKY CTA -->
+<div class="sticky-cta" id="stickyCTA">
+  <a href="assets/BM_Bharath_Resume.pdf" target="_blank">
+    Download CV ↗
+  </a>
+</div>
+
+
 </body>
 </html>
+
 
 
 
