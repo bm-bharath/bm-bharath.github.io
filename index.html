@@ -182,16 +182,24 @@
       margin-bottom: 0.6rem;
       border: 1px solid rgba(148,163,184,0.35);
     }
+    /* Project cards default visible */
     .projects-grid .card {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.4s ease;
+    }
+    
+    /* Animation state */
+    .projects-grid .card.animate {
       opacity: 0;
       transform: translateY(12px);
-      transition: all 0.4s ease;
     }
     
     .projects-grid .card.show {
       opacity: 1;
       transform: translateY(0);
     }
+
     .sticky-cta {
       position: fixed;
       bottom: 20px;
@@ -1633,10 +1641,16 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-  
-  <script>
+<script>
   const filterButtons = document.querySelectorAll(".filter-btn");
   const projects = document.querySelectorAll(".projects-grid .card");
+
+  // Initial load → show all projects
+  window.addEventListener("DOMContentLoaded", () => {
+    projects.forEach((card, index) => {
+      card.classList.add("show");
+    });
+  });
 
   filterButtons.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -1647,20 +1661,27 @@
 
       projects.forEach((project, index) => {
         const categories = project.dataset.category;
+
+        // Reset animation
         project.classList.remove("show");
+        project.classList.add("animate");
 
         if (filter === "all" || categories.includes(filter)) {
           project.style.display = "block";
           setTimeout(() => {
+            project.classList.remove("animate");
             project.classList.add("show");
-          }, index * 80); // stagger animation
+          }, index * 80);
         } else {
-          project.style.display = "none";
+          setTimeout(() => {
+            project.style.display = "none";
+          }, 200);
         }
       });
     });
   });
 </script>
+
 
 
 
@@ -1723,6 +1744,7 @@
 
 </body>
 </html>
+
 
 
 
